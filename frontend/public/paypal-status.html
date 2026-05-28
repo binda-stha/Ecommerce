@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PayPal Integration Status - Binda Trade</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .status-card {
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 15px 0;
+      }
+      .success {
+        border-color: #28a745;
+        background-color: #d4edda;
+      }
+      .warning {
+        border-color: #ffc107;
+        background-color: #fff3cd;
+      }
+      .error {
+        border-color: #dc3545;
+        background-color: #f8d7da;
+      }
+      .info {
+        border-color: #17a2b8;
+        background-color: #d1ecf1;
+      }
+      .test-button {
+        background: #0070ba;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        margin: 10px 5px;
+      }
+      .test-button:hover {
+        background: #005ea6;
+      }
+      .mock-paypal {
+        background: #ffc439;
+        color: #003087;
+        border: 2px solid #003087;
+      }
+      .code-block {
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 4px;
+        padding: 15px;
+        font-family: monospace;
+        margin: 10px 0;
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🔧 PayPal Integration Status & Testing</h1>
+
+      <div class="status-card warning">
+        <h3>⚠️ PayPal SDK Loading Issue Detected</h3>
+        <p>
+          <strong>Problem:</strong> External PayPal SDK failed to load from
+          https://www.paypal.com/sdk/js
+        </p>
+        <p><strong>Possible causes:</strong></p>
+        <ul>
+          <li>Network restrictions or firewall blocking PayPal domains</li>
+          <li>Internet connectivity issues</li>
+          <li>PayPal client ID configuration problems</li>
+          <li>CORS (Cross-Origin Resource Sharing) restrictions</li>
+        </ul>
+      </div>
+
+      <div class="status-card info">
+        <h3>🧪 Alternative Testing Methods</h3>
+        <p>
+          Since the PayPal SDK won't load externally, here are alternative ways
+          to test PayPal integration:
+        </p>
+
+        <h4>1. Mock PayPal Flow (Recommended for Development)</h4>
+        <button class="test-button mock-paypal" onclick="simulatePayPalFlow()">
+          🧪 Simulate PayPal Payment Flow
+        </button>
+        <p>
+          This simulates the entire PayPal payment process without requiring
+          external PayPal servers.
+        </p>
+
+        <h4>2. Direct PayPal Sandbox</h4>
+        <button
+          class="test-button"
+          onclick="window.open('https://www.sandbox.paypal.com', '_blank')"
+        >
+          🌐 Open PayPal Sandbox
+        </button>
+        <p>Test PayPal functionality directly in their sandbox environment.</p>
+
+        <h4>3. Application Flow Test</h4>
+        <button
+          class="test-button"
+          onclick="window.open('http://localhost:5173', '_blank')"
+        >
+          🛒 Test Main Application
+        </button>
+        <p>Test the complete e-commerce flow in the main application.</p>
+      </div>
+
+      <div class="status-card success">
+        <h3>✅ PayPal Integration Configuration</h3>
+        <p>
+          <strong>Client ID:</strong>
+          AeA1QIjFOWGQ6wMuWcQGuOWiJb3jVo6oFXhwgvvT6WdHcky7_a9B1UcFRaS6TGBVp1D_y6HgdZ2fATMe
+        </p>
+        <p><strong>Environment:</strong> Sandbox (Safe for testing)</p>
+        <p><strong>Currency:</strong> USD (with NPR conversion)</p>
+        <p><strong>Conversion Rate:</strong> 1 USD = 133 NPR</p>
+      </div>
+
+      <div class="status-card info">
+        <h3>💻 Working Features (Backend Ready)</h3>
+        <ul>
+          <li>✅ Order creation with proper subtotal/total calculation</li>
+          <li>✅ Currency conversion (NPR to USD)</li>
+          <li>✅ PayPal order tracking and logging</li>
+          <li>✅ Points system integration</li>
+          <li>✅ Database order storage</li>
+          <li>✅ Error handling and validation</li>
+        </ul>
+      </div>
+
+      <div id="test-results" class="status-card" style="display: none">
+        <h3>🧪 Mock PayPal Test Results</h3>
+        <div id="test-output"></div>
+      </div>
+
+      <div class="status-card info">
+        <h3>🔧 Troubleshooting Steps</h3>
+        <ol>
+          <li>
+            <strong>Check Internet Connection:</strong> Ensure stable internet
+            connectivity
+          </li>
+          <li>
+            <strong>Try Different Network:</strong> Test on mobile hotspot or
+            different WiFi
+          </li>
+          <li>
+            <strong>Disable VPN/Proxy:</strong> Temporarily disable any VPN or
+            proxy settings
+          </li>
+          <li>
+            <strong>Check Firewall:</strong> Ensure PayPal domains aren't
+            blocked
+          </li>
+          <li>
+            <strong>Clear Browser Cache:</strong> Clear browser cache and reload
+          </li>
+          <li>
+            <strong>Try Different Browser:</strong> Test in Chrome, Firefox, or
+            Edge
+          </li>
+        </ol>
+      </div>
+
+      <div class="status-card success">
+        <h3>🎯 Expected PayPal Flow (When Working)</h3>
+        <div class="code-block">
+          1. User adds items to cart: ₹1000 NPR 2. User goes to checkout 3. User
+          selects PayPal payment 4. User fills required fields 5. PayPal button
+          becomes active 6. User clicks PayPal button 7. Redirects to PayPal:
+          $7.52 USD 8. User completes PayPal payment 9. Returns to success page
+          10. Order saved in database 11. Points awarded (10 points for ₹1000)
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function simulatePayPalFlow() {
+        const resultsDiv = document.getElementById("test-results");
+        const outputDiv = document.getElementById("test-output");
+
+        resultsDiv.style.display = "block";
+        outputDiv.innerHTML = "<p>🔄 Simulating PayPal payment flow...</p>";
+
+        // Simulate the payment process
+        setTimeout(() => {
+          outputDiv.innerHTML = `
+                    <div style="background: #d4edda; padding: 15px; border-radius: 5px; margin: 10px 0;">
+                        <h4>✅ Mock PayPal Payment Successful!</h4>
+                        <p><strong>Mock Transaction ID:</strong> MOCK_${Date.now()}</p>
+                        <p><strong>Amount:</strong> $7.52 USD (₹1000 NPR)</p>
+                        <p><strong>Status:</strong> COMPLETED</p>
+                        <p><strong>Payer:</strong> test.buyer@example.com</p>
+                    </div>
+                    <div style="background: #d1ecf1; padding: 15px; border-radius: 5px; margin: 10px 0;">
+                        <h4>📊 Backend Processing Simulation:</h4>
+                        <ul>
+                            <li>✅ Order created in database</li>
+                            <li>✅ Payment status updated</li>
+                            <li>✅ Stock quantities decremented</li>
+                            <li>✅ Customer points awarded (10 points)</li>
+                            <li>✅ Order confirmation email prepared</li>
+                        </ul>
+                    </div>
+                    <p><strong>Result:</strong> This simulates exactly what would happen when PayPal integration works properly!</p>
+                `;
+        }, 2000);
+      }
+
+      // Check if we can access the main application
+      function checkApplicationStatus() {
+        fetch("http://localhost:5173")
+          .then((response) => {
+            if (response.ok) {
+              console.log("Main application is accessible");
+            }
+          })
+          .catch((error) => {
+            console.log("Main application check failed:", error);
+          });
+      }
+
+      // Run status checks on page load
+      window.addEventListener("load", () => {
+        checkApplicationStatus();
+        console.log("PayPal test page loaded successfully");
+      });
+    </script>
+  </body>
+</html>

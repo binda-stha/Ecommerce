@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binda Trade - Multi-Vendor E-commerce Platform</title>
+  </head>
+  <body>
+    <div id="root">
+      <div
+        style="
+          background: red;
+          color: white;
+          padding: 50px;
+          text-align: center;
+          font-size: 30px;
+        "
+      >
+        LOADING... If this stays, React isn't loading properly.
+      </div>
+    </div>
+    <script type="module" src="/src/entry.jsx"></script>
+
+    <!-- Debug script -->
+    <script>
+      console.log("HTML loaded, checking for React...");
+      setTimeout(() => {
+        const root = document.getElementById("root");
+        if (root && root.innerHTML.includes("LOADING...")) {
+          root.innerHTML =
+            '<div style="background: orange; color: white; padding: 50px; text-align: center; font-size: 30px;">ERROR: React main.jsx failed to load or execute!</div>';
+        }
+      }, 3000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Start Development Servers",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"dev"
+			],
+			"group": "build",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Start Backend Working Server",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"backend:dev"
+			],
+			"group": "build",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Start Enhanced Backend Server",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"backend:dev"
+			],
+			"group": "build",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Start Frontend Dev Server",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"frontend:dev"
+			],
+			"group": "build",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build and Run Frontend",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"frontend:dev"
+			],
+			"isBackground": true,
+			"group": "build"
+		}
+	]
+}
